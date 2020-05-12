@@ -1,0 +1,109 @@
+Algorithms
+
+(A)
+Algorithm: creating the tender 
+
+procedure createTender(_tenderTitle,_bidO,_bidC, _description,_address)
+		tdr ← new Tender()
+		tdr.manager ← _address
+		tdr.title ← _tenderTitle
+		tdr.description ← _description
+		tdr.bid_open ← _bidO
+		tdr.bid_close ← _bidC
+
+		tenders.add(tdr)
+
+
+ These documents include
+a balance sheet of the tendering organization and a certificate
+from RoC (Registrar of Companies). These documents are
+encrypted using the same key through which bids are
+encrypted. Once the deadline for the bids (bidC) passes, the
+bidder sends the symmetric key for decryption to the tendering
+organization.
+
+(B)
+
+Algorithm: Placing a Bid
+procedure Bid(_address,_quote,_quoteClause,_documents)
+	companyAdd ← _address
+	quoteAmount ← _quote
+	quoteClause ← _quoteClause
+	documents ← _documents
+	bidStatus ← “pending”
+
+procedure placeBid(_address,_quote,_quoteClause,_documents)
+
+	greatStart ← now > bidO
+	lessEnd ← now < bidC
+	notComplete ← tenderComplete == false
+	notBidLimit ← bidders[_address]==false
+
+	if greatStart and lessEnd and notComplete and notBidLimit then
+		bid ← new
+		Bid(_address,_quote,_quoteClause,_documents)
+		bidders[_address] = true
+		biddersCount++
+		bids.add(bid)
+
+Initially, when the bid is created it is in the pending state.
+After the bids are closed, the tendering organization can either
+choose to approve, reject or negotiate with the bidder.
+The bid is first validated for four conditions before it is placed:
+
+1. It is checked whether the bid is placed after the bid
+   opening date.
+2. It is checked whether the bid is placed before the bid
+   closing date.
+3. It is checked whether the tender is not complete.
+4. It is checked whether the bidder has already placed
+   the bid once.
+
+If any of these conditions are violated, the bid is rejected or
+else the bid is created using the details provided including
+company documents.
+
+(C)
+
+
+
+Security Implication
+
+Transparency and security are the major issues in e tendering system.
+
+Transparency:
+Current E-Tendering systems are not ‘fair and open’ meaning that the information is not shared with all stakeholders (Right to Information[1]). The information is released on ‘as they please’ basis for example - when a company is selected as a winner of a contract, other companies that bid on the same tender are not notified of why their bid was rejected and why a particular company was selected as a winner. 
+
+Whereas in Blockchain based e tendering after winner is selected we share the information of it with evey bidder so that
+they can see where they went wrong thus following transparency 
+
+
+Security:
+security is also a major issue for these portals leading to fraud and manipulation of data stored in a centralized database. 
+If a hacker gets hold of this centralized database, bids can be leaked to competitors leading to major financial and strategic losses for a business
+
+Whereas in blockchain based e tendering it is not  possible 
+decentralization of         information and is secured by encryption integrated with        undeniable block-based architecture for transaction     management.
+
+ Whenever the blockchain needs to be updated because of a transaction, a process called mining takes place [5],[7]. A block consists of many transactions. A consensus protocol is used and the mined block is broadcasted to all other nodes [8]. These blocks will have a cryptographic hash in the header that relates to the previous block in the chain. If a block is manipulated the hash associated with this block changes and as a result, all the proceeding blocks should be re-mined which is not possible. In this manner, blockchain employs the property of immutability.
+
+
+Hashes		Proof of work		Distributed(Peer to Peer) (Every one gets copy)
+
+
+Future Work
+
+Proof of work ?
+To temper a block one will have to tamper all the block in chain and calculate its hash and proof of work
+and also make to 
+
+1) 4.5
+2) 4.5
+3) 4.5
+4) 4.0
+5) 5.0
+6) 5.0
+7) 5.0
+8) 5.0
+
+Total 37.5
